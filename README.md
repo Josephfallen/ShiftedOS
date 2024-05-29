@@ -13,7 +13,7 @@ Before proceeding, ensure that your system meets the following requirements:
 #### Installation Steps
 
 1. **Download the ShiftedOS ISO:**
-   - You can download the ShiftedOS ISO from the [official website](https://shiftedos.org/downloads).
+   - You can download the ShiftedOS ISO from the [official website](https://shiftedos.org/downloads) or from the Github under `Releases`.
 
 2. **Create Bootable Media:**
    - If you're using a USB flash drive, you can use tools like Rufus (Windows) or Etcher (Windows, macOS, Linux) to create a bootable USB drive from the ISO file.
