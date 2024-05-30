@@ -3,6 +3,7 @@
 Welcome to ShiftedOS! This is a lightweight, user-friendly operating system designed to provide a seamless computing experience. Below are instructions on how to use the ShiftedOS ISO to install and run the operating system.
 > [!NOTE]
 > At the current moment ShiftedOS doesn't work.
+
 > [!NOTE]
 > Shifted_OS CLI works though
 #### System Requirements
