@@ -53,7 +53,10 @@ def start_cli():
             if tokens[0] == "exit":
                 break
             elif tokens[0] == "editor":
-                run_text_editor()
+                if len(tokens) > 1:
+                    run_text_editor(tokens[1])
+                else:
+                    run_text_editor()
             elif tokens[0] == "cd":
                 change_directory(tokens)
             elif tokens[0] == "ls":
@@ -72,23 +75,47 @@ def start_cli():
             else:
                 print("Command not found.")
 
-def run_text_editor():
+def run_text_editor(filename=None):
     lines = []
+    if filename:
+        try:
+            with open(filename, 'r') as file:
+                lines = file.readlines()
+        except FileNotFoundError:
+            print(f"File '{filename}' not found. Creating a new file.")
+        except Exception as e:
+            print(f"Error opening file: {e}")
+            return
+
     print("Enter your text below. Press Ctrl + D (Ctrl + Z on Windows) to save and exit.")
+    print("\nExisting content (if any):")
+    for line in lines:
+        print(line, end='')
+
     try:
         while True:
             try:
                 line = input()
             except EOFError:
                 break
-            lines.append(line)
+            lines.append(line + '\n')
     except KeyboardInterrupt:
         print("\nEditor terminated. No changes were saved.")
         return
 
-    text = '\n'.join(lines)
+    text = ''.join(lines)
     print("\nYour text:")
     print(text)
+
+    if not filename:
+        filename = input("Enter the filename to save: ")
+
+    try:
+        with open(filename, 'w') as file:
+            file.write(text)
+        print(f"Text saved to {filename}")
+    except Exception as e:
+        print(f"Error saving file: {e}")
 
 def change_directory(tokens):
     if len(tokens) == 1:
